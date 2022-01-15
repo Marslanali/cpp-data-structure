@@ -1,5 +1,4 @@
 // singly linked lists
-
 #include <iostream>
 
 // Declare a struct for the Linked list nodes
@@ -9,10 +8,20 @@ struct Node
   Node* next;
 };
 
+// method to traverse linked list
+void linked_list_traversal(Node* head)
+{
+  while (head != NULL)
+  {
+    std::cout << head->data << "\n";
+    head = head->next;
+  }
+  std::cout << "\n";
+}
 
 int main()
 {
-  // create the pointers for the linked list
+  // create the pointers for the linked list with 3 nodes
   Node* head;
   Node* first = NULL;
   Node* second = NULL;
@@ -34,80 +43,36 @@ int main()
   second->next = third;
   third->next = NULL;
 
-  // nodes traversal
+  // traverse the linked list
   head = first;
-  while (head != NULL)
-  {
-    std::cout << head->data << "\n";
-    head = head->next;
-  }
-  std::cout << "\n";
+  linked_list_traversal(head);
 
-  // Insert node at the beginning
-  Node* updated_first = new Node();
-  updated_first->data = 100;
-  updated_first->next = first;
+  // Insert a node at the beginning
+  Node* new_node_beginning = new Node ();
+  new_node_beginning->data = 5;
+  new_node_beginning->next = first;
+  head = new_node_beginning;
 
-  head = updated_first;
-  // nodes traversal on updated linked list
-  while (head != NULL)
-  {
-    std::cout << head->data << "\n";
-    head = head->next;
-  }
+  // traverse the updated linked list
+  head = new_node_beginning;
+  linked_list_traversal(head);
 
-  // Insert node at the end
-  Node* updated_last = new Node();
-  updated_last->data = 200;
-  third->next = updated_last;
-  updated_last->next = NULL;
+  // Insert a node at the end
+  Node* new_node_end = new Node();
+  new_node_end->data = 40;
+  third->next = new_node_end;
+  new_node_end->next = NULL;
 
-  std::cout << "\n";
-  head = updated_first;
-  // nodes traversal on updated linked list
-  while (head != NULL)
-  {
-    std::cout << head->data << "\n";
-    head = head->next;
-  }
+  // traverse the upated linked list
+  linked_list_traversal(head);
 
-  // Insert node at the middle
-  Node* updated_middle = new Node();
-  updated_middle->data = 500;
-  second->next = updated_middle;
-  updated_middle->next = third;
+  // Insert a node at the middle 
+  Node* new_node_middle = new Node();
+  second->next = new_node_middle;
+  new_node_middle->next = new_node_end;
 
-  std::cout << "\n";
-  head = updated_first;
-  // nodes traversal on updated linked list
-  while (head != NULL)
-  {
-    std::cout << head->data << "\n";
-    head = head->next;
-  }
-
-  // delete the node from beginning
-  std::cout << "\n";
-  delete updated_first;
-  head = first;
-  // nodes traversal on updated linked list
-  while (head != NULL)
-  {
-    std::cout << head->data << "\n";
-    head = head->next;
-  }
-
-  // delete the node from end
-  std::cout << "\n";
-  delete updated_last;
-  third->next = NULL;
-  head = first;
-  // nodes traversal on updated linked list
-  while (head != NULL)
-  {
-    std::cout << head->data << "\n";
-    head = head->next;
-  }
+  // traverse the upated linked list
+  linked_list_traversal(head);
 
   return 0;
 }
