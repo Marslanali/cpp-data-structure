@@ -106,5 +106,26 @@ int main()
     linked_list_traversal(head);
   }
 
+  // delete node from the middle
+  {
+    // create two tmp pointer
+    Node* tmp1 = head;
+    Node* tmp2 = NULL;
+    int i = 0;
+    // traverse with the tmp pointer to reach second last node
+    while (i < 1)
+    {
+      tmp1 = tmp1->next;
+      i++;
+    }
+    // delete the last node
+    tmp2 = tmp1->next;
+    tmp1->next = tmp2->next;
+    free(tmp2);
+    // traverse the updated linked list
+    linked_list_traversal(head);
+  }
+
+
   return 0;
 }
