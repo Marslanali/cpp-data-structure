@@ -126,6 +126,5 @@ int main()
     linked_list_traversal(head);
   }
 
-
   return 0;
 }
